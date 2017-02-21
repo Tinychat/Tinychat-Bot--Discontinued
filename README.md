@@ -1,2 +1,0 @@
-# Tinychat-Bot
-Tinychat Bot
