@@ -1,5 +1,6 @@
 **To run the bot please open config.py and add your credentials, change the keys then save, Then to run bot.py**
-
+<br/>
+**Please check the [commands](https://github.com/Tinychat/Tinychat-Bot/wiki) for the full list.**<br/>
 This is a bot to use in your Tinychat room,<br/>
 It's an aid to help moderate a room from spam and bad users, It's also a tool for YouTube/Soundcloud,<br/>
 You're able to add multiple songs to a playlist, This also has other features ranging from weather to yomama jokes,<br/>
@@ -7,7 +8,6 @@ This is using the pinylib library by @nortxort, You'll need all the dependencies
 You can install the modules directly in your python library or run them from the bot folder,<br/>
 Just make sure you have [Python 2.7](https://www.python.org/downloads/) installed.
 
-Please check the [commands](https://github.com/Tinychat/Tinychat-Bot/wiki) for the full list.
 
 This has fixes from the old bot and improvements,<br/>
 Moderators cannot ban another Moderator (I wasn't aware of this until a user (`Jesus`) informed me.)<br/>
