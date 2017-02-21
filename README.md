@@ -1,3 +1,5 @@
+**To run the bot please open config.py and add your credentials, change the keys then save, Then to run bot.py**
+
 This is a bot to use in your Tinychat room,<br/>
 It's an aid to help moderate a room from spam and bad users, It's also a tool for YouTube/Soundcloud,<br/>
 You're able to add multiple songs to a playlist, This also has other features ranging from weather to yomama jokes,<br/>
