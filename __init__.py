@@ -1,3 +1,0 @@
-"""
-Tinybot (Tinychat Bot)
-"""
