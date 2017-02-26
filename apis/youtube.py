@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-""" Contains functions to fetch info from youtube's API (googleapis.com/youtube/v3/) """
+""" Contains functions to fetch info from youtube's API (https://www.googleapis.com/youtube/v3/) """
 import logging
-
 import util.web
 import util.string_util
 
 
-ALLOWED_COUNTRIES = ['DK', 'PL', 'UK']
+ALLOWED_COUNTRIES = ['DK', 'PL', 'UK', 'US', 'DE', 'FR', 'JP', 'ES', 'BR', 'NL', 'TR']
 
 API_KEY = 'AIzaSyAey1TKphY9OnB6Z6fWojbj-Kf6iHX93fo'
 
@@ -74,7 +73,7 @@ def search_list(search_term, results=10):
     """
     if search_term:
         url = SEARCH_URL.format(API_KEY, util.web.quote(search_term.encode('ascii', 'ignore')))
-        response = util.web.http_get(url=url, json=True, referer='http://tinychat.com')
+        response = util.web.http_get(url=url, json=True, referer='https://tinychat.com')
 
         if response['json'] is not None:
             media_list = []
@@ -109,7 +108,7 @@ def playlist_search(search_term, results=5):
     """
     if search_term:
         url = PLAYLIST_SEARCH_URL.format(API_KEY, util.web.quote(search_term.encode('ascii', 'ignore')))
-        response = util.web.http_get(url=url, json=True, referer='http://tinychat.com')
+        response = util.web.http_get(url=url, json=True, referer='https://tinychat.com')
 
         if response['json'] is not None:
             play_lists = []
@@ -139,7 +138,7 @@ def playlist_videos(playlist_id):
     :return: list[dict{'type=youTube', 'video_id', 'video_title', 'video_time'}] or None on failure.
     """
     url = PLAYLIST_ITEMS_URL.format(API_KEY, playlist_id)
-    response = util.web.http_get(url=url, json=True, referer='http://tinychat.com')
+    response = util.web.http_get(url=url, json=True, referer='https://tinychat.com')
 
     if response['json'] is not None:
         video_list = []
@@ -176,7 +175,7 @@ def video_details(video_id, check=True):
     :return: dict{'type=youTube', 'video_id', 'video_time', 'video_title'} or None
     """
     url = VIDEO_DETAILS_URL.format(API_KEY, video_id)
-    response = util.web.http_get(url=url, json=True, referer='http://tinychat.com')
+    response = util.web.http_get(url=url, json=True, referer='https://tinychat.com')
 
     if response['json'] is not None:
         try:
