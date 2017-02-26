@@ -3,9 +3,9 @@ import util.web
 
 API_KEY = 'b59a98b55410a274c03d37a76b263c56'
 
-SEARCH_URL = 'http://api.soundcloud.com/tracks/?filter=streamable&q={1}&limit=25&client_id={0}'
+SEARCH_URL = 'https://api.soundcloud.com/tracks/?filter=streamable&q={1}&limit=25&client_id={0}'
 
-TRACK_DETAILS_URL = 'http://api.soundcloud.com/tracks/{1}?client_id={0}'
+TRACK_DETAILS_URL = 'https://api.soundcloud.com/tracks/{1}?client_id={0}'
 
 
 def search(search_term):
@@ -56,18 +56,3 @@ def track_info(track_id):
             except (IndexError, KeyError):
                 return None
         return None
-
-
-def soundcloud_resolve(sc_url):
-    pass
-
-
-def soundcloud_user_search(user_name):
-    if user_name:
-        url = 'http://api.soundcloud.com/all/?q=%s&client_id=%s' % (user_name, API_KEY)
-    pass
-
-
-def soundcloud_user_info_by_id(user_id):
-    url = 'http://api.soundcloud.com/all/%s?client_id=%s' % (user_id, API_KEY)
-    pass
