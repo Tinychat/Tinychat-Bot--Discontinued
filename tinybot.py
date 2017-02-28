@@ -5,9 +5,9 @@ import threading
 import pinylib
 import util.media_manager
 from page import privacy
-from apis import youtube, soundcloud, lastfm, other, locals_
+from apis import youtube, soundcloud, lastfm, other, locals_, roombooter
 
-__version__ = '6.1.3'
+__version__ = '6.1.4'
 log = logging.getLogger(__name__)
 
 
@@ -282,12 +282,6 @@ class TinychatBot(pinylib.TinychatRTMPClient):
                 elif cmd == prefix + 'now?':
                     self.do_now_playing()
 
-                elif cmd == prefix + 'play':
-                    threading.Thread(target=self.do_play_youtube, args=(cmd_arg,)).start()
-
-                elif cmd == prefix + 'playsc':
-                    threading.Thread(target=self.do_play_soundcloud, args=(cmd_arg,)).start()
-
                 # Tinychat API commands.
                 elif cmd == prefix + 'spy':
                     threading.Thread(target=self.do_spy, args=(cmd_arg,)).start()
@@ -326,6 +320,32 @@ class TinychatBot(pinylib.TinychatRTMPClient):
 
                 elif cmd == prefix + 'flip':
                     self.do_flip_coin()
+
+            # Mod commands in public chat, Only level 3+ can play videos.
+            if self.has_level(3):
+                if cmd == prefix + 'play':
+                    threading.Thread(target=self.do_play_youtube, args=(cmd_arg,)).start()
+
+                elif cmd == prefix + 'playsc':
+                    threading.Thread(target=self.do_play_soundcloud, args=(cmd_arg,)).start()
+
+                elif cmd == prefix + 'skip':
+                    self.do_skip()
+
+                elif cmd == prefix + 'replay':
+                    self.do_media_replay()
+
+                elif cmd == prefix + 'resume':
+                    self.do_play_media()
+
+                elif cmd == prefix + 'pause':
+                    self.do_media_pause()
+
+                elif cmd == prefix + 'seek':
+                    self.do_seek_media(pm_arg)
+
+                elif cmd == prefix + 'stop':
+                    self.do_close_media()
 
             # Print command to console.
             self.console_write(pinylib.COLOR['yellow'], self.active_user.nick + ': ' + cmd + ' ' + cmd_arg)
@@ -1532,7 +1552,7 @@ class TinychatBot(pinylib.TinychatRTMPClient):
 
                     elif pm_cmd == 'clearaccounts':
                         self.do_clear_bad_accounts()
-
+                        
             # Admin commands - Bot Controller using key.
             if self.has_level(2):
                 if pm_cmd == 'public':
