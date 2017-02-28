@@ -5,9 +5,9 @@ import threading
 import pinylib
 import util.media_manager
 from page import privacy
-from apis import youtube, soundcloud, lastfm, other, locals_, roombooter
+from apis import youtube, soundcloud, lastfm, other, locals_
 
-__version__ = '6.1.4'
+__version__ = '6.1.5'
 log = logging.getLogger(__name__)
 
 
@@ -1652,6 +1652,12 @@ class TinychatBot(pinylib.TinychatRTMPClient):
                 elif pm_cmd == 'clearpl':
                     self.do_clear_playlist()
 
+                elif pm_cmd == 'play':
+                    threading.Thread(target=self.do_play_youtube, args=(pm_arg,)).start()
+
+                elif pm_cmd == 'playsc':
+                    threading.Thread(target=self.do_play_soundcloud, args=(pm_arg,)).start()
+
                 # Anti-spam
                 elif pm_cmd == 'kick':
                     threading.Thread(target=self.do_kick, args=(pm_arg,)).start()
@@ -1701,12 +1707,6 @@ class TinychatBot(pinylib.TinychatRTMPClient):
 
                 elif pm_cmd == 'minfo':
                     self.do_media_info()
-
-                elif pm_cmd == 'play':
-                    threading.Thread(target=self.do_play_youtube, args=(pm_arg,)).start()
-
-                elif pm_cmd == 'playsc':
-                    threading.Thread(target=self.do_play_soundcloud, args=(pm_arg,)).start()
 
                 elif pm_cmd == 'pm':
                     self.do_pm_bridge(pm_parts)
