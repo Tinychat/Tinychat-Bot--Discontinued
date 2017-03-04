@@ -1570,9 +1570,6 @@ class TinychatBot(pinylib.TinychatRTMPClient):
 
                     elif pm_cmd == 'clearaccounts':
                         self.do_clear_bad_accounts()
-
-                    elif pm_cmd == 'boot':
-                        threading.Thread(target=self.do_roombooter, args=(pm_arg,)).start()
             # Admin commands - Bot Controller using key.
             if self.has_level(2):
                 if pm_cmd == 'public':
