@@ -7,7 +7,7 @@ import util.media_manager
 from page import privacy
 from apis import youtube, soundcloud, lastfm, other, locals_
 
-__version__ = '6.1.5'
+__version__ = '6.1.6'
 log = logging.getLogger(__name__)
 
 
@@ -21,7 +21,6 @@ class TinychatBot(pinylib.TinychatRTMPClient):
 
     def on_join(self, join_info):
         """ Application message received when a user joins the room.
-
         :param join_info: Information about the user joining.
         :type join_info: dict
         """
@@ -288,6 +287,9 @@ class TinychatBot(pinylib.TinychatRTMPClient):
 
                 elif cmd == prefix + 'spyuser':
                     threading.Thread(target=self.do_account_spy, args=(cmd_arg,)).start()
+
+                elif cmd == prefix + 'room':
+                    threading.Thread(target=self.do_room_info, args=(cmd_arg,)).start()
 
                 # Other API commands.
                 elif cmd == prefix + 'urban':
@@ -1398,6 +1400,22 @@ class TinychatBot(pinylib.TinychatRTMPClient):
                     self.send_bot_msg('*Bio:* ' + tc_usr['biography'])
                     self.send_bot_msg('*Location:* ' + tc_usr['location'])
                     self.send_bot_msg('*Last login:* ' + tc_usr['last_active'])
+                    self.send_bot_msg('*Room ID:* ' + tc_usr['tinychat_id'])
+
+    def do_room_info(self, room):
+        """
+        Shows info about a tinychat room.
+        :param room: str tinychat room.
+        """
+        if self.is_client_mod:
+            if len(room) is 0:
+                self.send_undercover_msg(self.active_user.nick, 'Missing room to search for.')
+            else:
+                tc_usr = pinylib.apis.tinychat.room_info(room)
+                if tc_usr is None:
+                    self.send_undercover_msg(self.active_user.nick, 'Could not find tinychat info for: ' + room)
+                else:
+                    self.send_bot_msg('*Room ID:* ' + tc_usr['tinychat_id'])
 
     # == Other API Command Methods. ==
     def do_search_urban_dictionary(self, search_str):
@@ -1552,7 +1570,9 @@ class TinychatBot(pinylib.TinychatRTMPClient):
 
                     elif pm_cmd == 'clearaccounts':
                         self.do_clear_bad_accounts()
-                        
+
+                    elif pm_cmd == 'boot':
+                        threading.Thread(target=self.do_roombooter, args=(pm_arg,)).start()
             # Admin commands - Bot Controller using key.
             if self.has_level(2):
                 if pm_cmd == 'public':
