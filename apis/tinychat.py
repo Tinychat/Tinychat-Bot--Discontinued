@@ -15,7 +15,7 @@ def user_info(tc_account):
     if response['json'] is not None:
         if 'error' not in response['json']:
             username = response['json']['username']
-            # user_id = response['json']['id']
+            user_id = response['json']['id']
             last_active = time.ctime(int(response['json']['last_active']))
             name = response['json']['name']
             location = response['json']['location']
@@ -24,7 +24,7 @@ def user_info(tc_account):
 
             return {
                 'username': username,
-                # 'tinychat_id': user_id,
+                'tinychat_id': user_id,
                 'last_active': last_active,
                 'name': name,
                 'location': location,
@@ -61,3 +61,22 @@ def spy_info(room):
                 }
         else:
             return {'error': response['json']['error']}
+
+
+def room_info(tc_room):
+    """
+    Finds info for a given tinychat room name.
+    :param tc_room: str the room name.
+    :return: dict {'tinychat_id'} or None on error.
+    """
+    url = 'https://tinychat.com/api/tcinfo?username=%s' % tc_room
+    response = util.web.http_get(url=url, json=True)
+    if response['json'] is not None:
+        if 'error' not in response['json']:
+            room_id = response['json']['id']
+
+            return {
+                'tinychat_id': room_id
+            }
+        else:
+            return None
