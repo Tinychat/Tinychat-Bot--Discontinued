@@ -1,3 +1,7 @@
+
+![Github code](https://img.shields.io/badge/Code-Python-green.svg) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Tinychat/Tinychat-Bot/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/Tinychat/Tinychat-Bot.svg)](https://github.com/Tinychat/Tinychat-Bot/issues) [![GitHub stars](https://img.shields.io/github/stars/Tinychat/Tinychat-Bot.svg)](https://github.com/Tinychat/Tinychat-Bot/stargazers) [![GitHub forks](https://img.shields.io/github/forks/Tinychat/Tinychat-Bot.svg)](https://github.com/Tinychat/Tinychat-Bot/network) ![Github downloads](https://img.shields.io/github/downloads/Tinychat/Tinychat-Bot/total.svg)
+
+
 **To run the bot please open config.py and add your credentials, change the keys then save, Then to run bot.py**
 <br>
 **Please check the [commands](https://github.com/Tinychat/Tinychat-Bot/wiki) for the full list.**<br><br>
