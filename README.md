@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Tinychat/Tinychat-Bot/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/Tinychat/Tinychat-Bot.svg)](https://github.com/Tinychat/Tinychat-Bot/issues) 
 [![GitHub stars](https://img.shields.io/github/stars/Tinychat/Tinychat-Bot.svg)](https://github.com/Tinychat/Tinychat-Bot/stargazers) 
-[![GitHub forks](https://img.shields.io/github/forks/Tinychat/Tinychat-Bot.svg)](https://github.com/Tinychat/Tinychat-Bot/network) <br>[![Twitter](https://img.shields.io/twitter/url/https/github.com/Tinychat/Tinychat-Bot/.svg?style=social&style=plastic)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
+[![GitHub forks](https://img.shields.io/github/forks/Tinychat/Tinychat-Bot.svg)](https://github.com/Tinychat/Tinychat-Bot/network) <br>
 
 
 **Please check out https://github.com/Tinychat/Tinychat-YouTube-Fix to fix the issue with YouTube, I maybe adding this to the bot at a later date and once I've finished debugging the issues with it.**
