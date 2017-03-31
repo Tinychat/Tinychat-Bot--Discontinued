@@ -7,7 +7,7 @@ import util.string_util
 
 ALLOWED_COUNTRIES = ['DK', 'PL', 'UK', 'US', 'DE', 'FR', 'JP', 'ES', 'BR', 'NL', 'TR']
 
-API_KEY = 'AIzaSyAey1TKphY9OnB6Z6fWojbj-Kf6iHX93fo'
+API_KEY = 'AIzaSyCniyayPRr9S6jnugf-emjUf2izruh0eL4'
 
 SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search?' \
              'type=video&key={0}&maxResults=50&q={1}&part=snippet'
