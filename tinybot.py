@@ -7,7 +7,7 @@ import util.media_manager
 from page import privacy
 from apis import youtube, soundcloud, lastfm, other, locals_
 
-__version__ = '6.1.6'
+__version__ = '6.1.7'
 log = logging.getLogger(__name__)
 
 
@@ -1688,7 +1688,7 @@ class TinychatBot(pinylib.TinychatRTMPClient):
                 elif pm_cmd == 'removenick':
                     self.do_remove_bad_nick(pm_arg)
 
-                elif pm_cmd == 'badstring':
+                elif pm_cmd == 'badword':
                     self.do_bad_string(pm_arg)
 
                 elif pm_cmd == 'removeword':
@@ -1973,7 +1973,7 @@ class TinychatBot(pinylib.TinychatRTMPClient):
         was_banned = False
         chat_words = msg.split(' ')
         for bad in pinylib.CONFIG.B_STRING_BANS:
-            if bad.startswith('*'):
+            if bad.startswith(''):
                 _ = bad.replace('*', '')
                 if _ in msg:
                     self.send_ban_msg(self.active_user.nick, self.active_user.id)
