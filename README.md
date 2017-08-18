@@ -24,8 +24,6 @@ I would recommend that you register with each provider and use your own Api keys
 
 * [Soundcloud Developers](https://developers.soundcloud.com)
 
-* [World Weather Online](http://developer.worldweatheronline.com/api/)
-
 **Windows**
 * `C:\Python27\Scripts\pip2 install bs4 requests colorama goslate` or
 
