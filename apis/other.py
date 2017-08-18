@@ -24,45 +24,6 @@ def urbandictionary_search(search):
         return None
 
 
-def weather_search(city):
-    """
-    Searches worldweatheronline's API for weather data for a given city.
-    You must have a working API key to be able to use this function.
-    :param city: The city str to search for.
-    :return: weather data str or None on no match or error.
-    """
-    if str(city).strip():
-        api_key = '500d22f9d3f17b1c01d7584d19741'
-        if not api_key:
-            return 'Missing api key.'
-        else:
-            weather_api_url = 'https://api.worldweatheronline.com/free/v2/weather.ashx?' \
-                              'q=%s&format=json&key=%s' % (city, api_key)
-
-            response = util.web.http_get(weather_api_url, json=True)
-
-            if response['json'] is not None:
-                try:
-                    weatherdesc = response['json']['data']['current_condition'][0]['weatherDesc'][0]['value']
-                    winddir16point = response['json']['data']['current_condition'][0]['winddir16Point']
-                    windspeedmiles = response['json']['data']['current_condition'][0]['windspeedMiles']
-                    windspeedkmph = response['json']['data']['current_condition'][0]['windspeedKmph']
-                    feelslikec = response['json']['data']['current_condition'][0]['FeelsLikeC']
-                    feelslikef = response['json']['data']['current_condition'][0]['FeelsLikeF']
-                    temp_c = response['json']['data']['current_condition'][0]['temp_C']
-                    temp_f = response['json']['data']['current_condition'][0]['temp_F']
-                    query = response['json']['data']['request'][0]['query'].encode('ascii', 'ignore')
-                    result = query + ' - ' + weatherdesc + ', ' + temp_c + 'C (' + temp_f + 'F), ' \
-                                     'Feels Like: ' + feelslikec + 'C (' + feelslikef + 'F) , ' \
-                                     'Wind Speed: ' + windspeedmiles + ' mph (' + windspeedkmph + ' kph), ' \
-                                     'Wind Direction: ' + winddir16point
-                    return result
-                except (IndexError, KeyError):
-                    return None
-    else:
-        return None
-
-
 def whois(ip):
     """
     Searches ip-api for information about a given IP.
