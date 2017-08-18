@@ -17,7 +17,7 @@ You can install the modules directly in your python library or run them from the
 Just make sure you have [Python 2.7](https://www.python.org/downloads/) installed.
 
 
-**I've also provided my own Api keys for YouTube, Soundcloud and the World Weather Online,<br>
+**I've also provided my own Api keys for YouTube and Soundcloud,<br>
 I would recommend that you register with each provider and use your own Api keys, The links are provided below.**
 
 * [Google Developers](https://developers.google.com)
