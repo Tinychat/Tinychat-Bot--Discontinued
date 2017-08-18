@@ -7,7 +7,7 @@ import util.media_manager
 from page import privacy
 from apis import youtube, soundcloud, lastfm, other, locals_
 
-__version__ = '6.1.7'
+__version__ = '6.1.8'
 log = logging.getLogger(__name__)
 
 
@@ -294,9 +294,6 @@ class TinychatBot(pinylib.TinychatRTMPClient):
                 # Other API commands.
                 elif cmd == prefix + 'urban':
                     threading.Thread(target=self.do_search_urban_dictionary, args=(cmd_arg,)).start()
-
-                elif cmd == prefix + 'weather':
-                    threading.Thread(target=self.do_weather_search, args=(cmd_arg,)).start()
 
                 elif cmd == prefix + 'ip':
                     threading.Thread(target=self.do_whois_ip, args=(cmd_arg,)).start()
@@ -1438,21 +1435,6 @@ class TinychatBot(pinylib.TinychatRTMPClient):
                             self.send_bot_msg(chunks[i])
                     else:
                         self.send_bot_msg(urban)
-
-    def do_weather_search(self, search_str):
-        """ Shows weather info for a given search string.
-
-        :param search_str: The search string to find weather data for.
-        :type search_str: str
-        """
-        if len(search_str) is 0:
-            self.send_bot_msg('Please specify a city to search for.')
-        else:
-            weather = other.weather_search(search_str)
-            if weather is None:
-                self.send_bot_msg('Could not find weather data for: %s' % search_str)
-            else:
-                self.send_bot_msg(weather)
 
     def do_whois_ip(self, ip_str):
         """ Shows whois info for a given ip address or domain.
